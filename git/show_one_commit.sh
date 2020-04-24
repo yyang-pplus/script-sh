@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ $# -eq 1 ]; then
-    git difftool $1^ $1
+    COMMIT="$1"
+    git difftool $COMMIT^ $COMMIT
 else
     echo "Usage: $(basename $0) <commit>"
     exit 1

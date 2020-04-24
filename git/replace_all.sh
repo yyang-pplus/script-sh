@@ -18,9 +18,10 @@ else
     exit 1
 fi
 
+SED_COMMAND="$1"
 
-SEARCH_KEY=`echo "$1" | sed -n -E 's%^.*/(.*)/(.*)/.*$%\1%p'`
+SEARCH_KEY=`echo "$SED_COMMAND" | sed -n -E 's%^.*/(.*)/(.*)/.*$%\1%p'`
 
 QuietRun pushd "$DIRECTORY"
-    git grep --files-with-matches --null "$SEARCH_KEY" . | xargs -0 sed -i "$1"
+    git grep --files-with-matches --null "$SEARCH_KEY" . | xargs -0 sed -i "$SED_COMMAND"
 QuietRun popd
