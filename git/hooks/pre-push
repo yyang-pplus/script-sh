@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+THIS_DIR=$(dirname "$0")
+source $THIS_DIR/../util.sh
+
+UPSTREAM="$1"
+
+exit ! IsProtected "$UPSTREAM"
