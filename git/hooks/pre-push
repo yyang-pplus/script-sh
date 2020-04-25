@@ -28,3 +28,15 @@ while read local_ref local_sha remote_ref remote_sha; do
         exit 1
     fi
 done
+
+if [ -z "$remote_ref" ]; then
+    ##
+    # @reference    How can I see which Git branches are tracking which remote / upstream branch?
+    #               https://stackoverflow.com/questions/4950725/how-can-i-see-which-git-branches-are-tracking-which-remote-upstream-branch
+    ##
+    DEFAULT_UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})
+
+    if IsProtected "$DEFAULT_UPSTREAM"; then
+        exit 1
+    fi
+fi
