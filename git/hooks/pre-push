@@ -1,9 +1,32 @@
 #!/bin/bash
 
 
-THIS_DIR=$(dirname "$0")
-source $THIS_DIR/../util.sh
+source ~/.bash_util.sh
 
-UPSTREAM="$1"
+IsProtected() {
+    local BRANCH_NAME="$1"
+    local PATTERN="(^master$)"
 
-exit ! IsProtected "$UPSTREAM"
+    ##
+    # @reference    Bash test: what does “=~” do?
+    #               https://unix.stackexchange.com/questions/340440/bash-test-what-does-do
+    #
+    # @note The string, to be matched, should be quoted.
+    #       The regular expression pattern shouldn't be quoted.
+    ##
+    if [[ "$BRANCH_NAME" =~ $PATTERN ]]; then
+        Error "Push to $BRANCH_NAME is restricted."
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+while read local_ref local_sha remote_ref remote_sha; do
+    if IsProtected "$remote_ref"; then
+        exit 1
+    else
+        exit 0
+    fi
+done
