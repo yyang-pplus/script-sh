@@ -35,9 +35,12 @@ if [ -z "$remote_ref" ]; then
     # @reference    How can I see which Git branches are tracking which remote / upstream branch?
     #               https://stackoverflow.com/questions/4950725/how-can-i-see-which-git-branches-are-tracking-which-remote-upstream-branch
     ##
-    DEFAULT_UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})
+    DEFAULT_FULL_UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})
+    REMOTE="$1"
+    # Remove "$REMOTE/" prefix, for example "origin/" before test
+    DEFAULT_UPSTREAM_BRANCH_NAME=${DEFAULT_FULL_UPSTREAM/^$REMOTE\//}
 
-    if IsProtected "$DEFAULT_UPSTREAM"; then
+    if IsProtected "$DEFAULT_UPSTREAM_BRANCH_NAME"; then
         exit 1
     fi
 fi
