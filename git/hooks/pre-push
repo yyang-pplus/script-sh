@@ -39,7 +39,7 @@ if [ -z "$has_remote_ref" ]; then
     DEFAULT_FULL_UPSTREAM=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream})
     REMOTE="$1"
     # Remove "$REMOTE/" prefix, for example "origin/", before test
-    DEFAULT_UPSTREAM_BRANCH_NAME=$(echo "$DEFAULT_FULL_UPSTREAM" | sed "s/$REMOTE\///")
+    DEFAULT_UPSTREAM_BRANCH_NAME=${DEFAULT_FULL_UPSTREAM##$REMOTE/}
 
     if IsProtected "$DEFAULT_UPSTREAM_BRANCH_NAME"; then
         exit 1
