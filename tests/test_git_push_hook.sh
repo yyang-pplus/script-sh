@@ -63,14 +63,32 @@ testRemoveRemotePrefixWithRefsFor() {
 testProtectedPatternMatchesMaster() {
     eval "$PATTERN_CMD"
 
-    assertTrue "[[ "master" =~ $PATTERN ]]"
+    assertTrue "[[ 'master' =~ $PATTERN ]]"
 }
 
 
 testProtectedPatternMatchesAheadMaster() {
     eval "$PATTERN_CMD"
 
-    assertTrue "[[ "master" =~ $PATTERN ]]"
+    assertTrue "[[ 'refs/heads/master' =~ $PATTERN ]]"
+}
+
+
+testProtectedPatternNotMatchRefsFor() {
+    eval "$PATTERN_CMD"
+
+    assertFalse "[[ 'refs/for/master' =~ $PATTERN ]]"
+}
+
+
+testExtraProtectedPatternPrefix() {
+    local GIT_EXTRA_PROTECTED_BRANCH_PATTERN="example.*"
+
+    eval "$PATTERN_CMD"
+
+    assertTrue "Case 1" "[[ 'example' =~ $PATTERN ]]"
+    assertTrue "Case 2" "[[ 'example_branch_1' =~ $PATTERN ]]"
+    assertTrue "Case 3" "[[ 'example-1.6.0' =~ $PATTERN ]]"
 }
 
 
