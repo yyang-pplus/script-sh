@@ -4,7 +4,11 @@
 oneTimeSetUp() {
     git checkout --quiet master
 
-    REMOVE_REMOTE_PREFIX_CMD=$(grep --no-filename DEFAULT_UPSTREAM_BRANCH_NAME= git/hooks/pre-push | rev | cut --delimiter ' ' --fields 1 | rev)
+    PROJECT_ROOT_DIR=$(git rev-parse --show-toplevel)
+    PRE_PUSH_SCRIPT_FILE="$PROJECT_ROOT_DIR/git/hooks/pre-push"
+    REMOVE_REMOTE_PREFIX_CMD=$(grep --no-filename "DEFAULT_UPSTREAM_BRANCH_NAME=" "$PRE_PUSH_SCRIPT_FILE")
+
+    PATTERN_CMD=$(grep --no-filename "PATTERN=" "$PRE_PUSH_SCRIPT_FILE")
 }
 
 
@@ -53,6 +57,20 @@ testRemoveRemotePrefixWithRefsFor() {
     eval "local $REMOVE_REMOTE_PREFIX_CMD"
 
     assertEquals "$DEFAULT_FULL_UPSTREAM" "$DEFAULT_UPSTREAM_BRANCH_NAME"
+}
+
+
+testProtectedPatternMatchesMaster() {
+    eval "$PATTERN_CMD"
+
+    assertTrue "[[ "master" =~ $PATTERN ]]"
+}
+
+
+testProtectedPatternMatchesAheadMaster() {
+    eval "$PATTERN_CMD"
+
+    assertTrue "[[ "master" =~ $PATTERN ]]"
 }
 
 
