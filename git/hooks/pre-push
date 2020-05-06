@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ##
+# A git pre-push hook that prevent pushing directly to protected branch(es)
+#
 # @env  GIT_EXTRA_PROTECTED_BRANCH_PATTERN
 ##
 
