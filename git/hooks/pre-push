@@ -6,7 +6,14 @@
 # @env  GIT_EXTRA_PROTECTED_BRANCH_PATTERN
 ##
 
-source ~/.bash_util.sh
+if [ -f ~/.bash_util.sh ]; then
+    source ~/.bash_util.sh
+else
+    Error() {
+        cat <<< "Error: $@" 1>&2;
+    }
+fi
+
 
 IsProtected() {
     local BRANCH_NAME="$1"
