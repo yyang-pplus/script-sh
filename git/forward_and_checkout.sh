@@ -16,6 +16,14 @@ else
     exit 1
 fi
 
-LogAndRun Assert git checkout $TRACKED_BRANCH
-LogAndRun Assert git pull --rebase --ff-only --autostash
-LogAndRun Assert git checkout -b "$NEW_BRANCH"
+##
+# @reference    Aborting a shell script if any command returns a non-zero value?
+#               https://stackoverflow.com/questions/821396/aborting-a-shell-script-if-any-command-returns-a-non-zero-value
+# @reference    How to echo shell commands as they are executed
+#               https://stackoverflow.com/questions/2853803/how-to-echo-shell-commands-as-they-are-executed
+##
+set -ex
+
+git checkout $TRACKED_BRANCH
+git pull --rebase --ff-only --autostash
+git checkout -b "$NEW_BRANCH"
