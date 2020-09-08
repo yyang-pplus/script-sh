@@ -2,6 +2,8 @@
 
 source ~/.bash_util.sh
 
+set -x
+
 
 ##
 # @reference    Use Git Grep to Replace Strings in Files in Your Git Repository
@@ -20,5 +22,5 @@ SED_COMMAND="$1"
 SEARCH_KEY=`echo "$SED_COMMAND" | sed -n -E 's%^.*/(.*)/(.*)/.*$%\1%p'`
 
 QuietRun pushd "$DIRECTORY"
-    git grep --files-with-matches --null "$SEARCH_KEY" . | xargs -0 sed -i "$SED_COMMAND"
+    git grep --files-with-matches --null -E "$SEARCH_KEY" . | xargs -0 sed -i -E "$SED_COMMAND"
 QuietRun popd
