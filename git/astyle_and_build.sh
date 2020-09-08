@@ -3,7 +3,7 @@
 source ~/.bash_util.sh
 
 
-set -ex
+set -e
 
 
 NUMBER_CORES=$(grep ^cpu\\scores /proc/cpuinfo | awk '{print $4}' | uniq)
