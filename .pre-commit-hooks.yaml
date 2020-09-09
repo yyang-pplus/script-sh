@@ -1,0 +1,18 @@
+- id: astyle-c
+  name: astyle-c
+  description: Run astyle for C files.
+  entry: astyle
+  language: system
+  types: [c]
+- id: astyle-cpp
+  name: astyle-c++
+  description: Run astyle for C++ files.
+  entry: astyle
+  language: system
+  types: [c++]
+- id: astyle-cs
+  name: astyle-c#
+  description: Run astyle for C# files.
+  entry: astyle
+  language: system
+  types: [c#]
