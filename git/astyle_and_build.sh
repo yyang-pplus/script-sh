@@ -10,7 +10,7 @@ NUMBER_CORES=$(grep ^cpu\\scores /proc/cpuinfo | awk '{print $4}' | uniq)
 PROJECT_ROOT_DIR=$(git rev-parse --show-toplevel)
 
 QuietRun pushd "$PROJECT_ROOT_DIR"
-    astyle "*.c, *.cpp, *.h, *.hpp, *.cs"
+    astyle --recursive "*.c, *.cpp, *.h, *.hpp, *.cs"
 
     pushd build
         echo "Compiling with jobs:" $NUMBER_CORES
