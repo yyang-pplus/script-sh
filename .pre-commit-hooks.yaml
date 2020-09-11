@@ -27,6 +27,6 @@
   description: Run shfmt for shell scripts.
   language: system
   entry: shfmt
-  args: [-l, -w, -i, '4', -ci, -sr, -kp]
+  args: [-l, -w, -i, '4', -ci, -sr]
   types: [shell]
   additional_dependencies: [shfmt]
