@@ -2,18 +2,17 @@
 
 source ~/.bash_util.sh
 
-
 TRACKED_BRANCH="master"
 NEW_BRANCH=""
 
 if [ $# -eq 1 ]; then
-    NEW_BRANCH=$1
+	NEW_BRANCH=$1
 elif [ $# -eq 2 ]; then
-    TRACKED_BRANCH=$1
-    NEW_BRANCH=$2
+	TRACKED_BRANCH=$1
+	NEW_BRANCH=$2
 else
-    echo "Usage: $(basename $0) [<tracked_branch>] <new_branch>"
-    exit 1
+	echo "Usage: $(basename $0) [<tracked_branch>] <new_branch>"
+	exit 1
 fi
 
 ##

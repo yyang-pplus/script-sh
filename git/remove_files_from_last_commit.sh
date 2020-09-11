@@ -1,9 +1,8 @@
 #!/bin/bash
 
-
 if [ $# -eq 0 ]; then
-    echo "Usage: $(basename $0) [--] <paths>..."
-    exit 1
+	echo "Usage: $(basename $0) [--] <paths>..."
+	exit 1
 fi
 
 ##
