@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ##
 # @reference    Repeatedly run a shell command until it fails?
 #               https://stackoverflow.com/questions/12967232/repeatedly-run-a-shell-command-until-it-fails

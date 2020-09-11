@@ -1,5 +1,10 @@
 default_stages: [commit]
 repos:
+  - repo: https://github.com/yyang-even/yyLinuxScripts
+    rev: 57f5684d596b457a0294398ea9713271454b242b
+    hooks:
+      - id: shfmt
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.2.0
     hooks:

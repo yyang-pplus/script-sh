@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ##
 # @reference    Find duplicate lines in a file and count how many time each line was duplicated?
 #               https://stackoverflow.com/questions/6712437/find-duplicate-lines-in-a-file-and-count-how-many-time-each-line-was-duplicated
