@@ -4,15 +4,27 @@
   entry: astyle
   language: system
   types: [c]
+
 - id: astyle-cpp
   name: astyle-c++
   description: Run astyle for C++ files.
   entry: astyle
   language: system
   types: [c++]
+
 - id: astyle-cs
   name: astyle-c#
   description: Run astyle for C# files.
   entry: astyle
   language: system
   types: [c#]
+
+- id: shfmt
+  name: shfmt
+  description: Run shfmt for shell scripts.
+  minimum_pre_commit_version: 2.4.0
+  language: golang
+  additional_dependencies: [mvdan.cc/sh/v3/cmd/shfmt]
+  entry: shfmt
+  args: [-w]
+  types: [shell]
