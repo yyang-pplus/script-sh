@@ -2,7 +2,6 @@
 
 source ~/.bash_util.sh
 
-
 TRACKED_BRANCH="master"
 NEW_BRANCH=""
 

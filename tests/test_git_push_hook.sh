@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 oneTimeSetUp() {
     git checkout --quiet master
 
@@ -11,7 +10,6 @@ oneTimeSetUp() {
     PATTERN_CMD=$(grep --no-filename "PATTERN=" "$PRE_PUSH_SCRIPT_FILE")
 }
 
-
 oneTimeTearDown() {
     ##
     # @reference    Is there any way to git checkout previous branch?
@@ -20,24 +18,20 @@ oneTimeTearDown() {
     git checkout --quiet -
 }
 
-
 testPreHookScriptExistAndRunable() {
     DOT_GIT_DIR=$(git rev-parse --git-dir)
     assertTrue "[ -x \"$DOT_GIT_DIR/hooks/pre-push\" ]"
 }
-
 
 testDefaultPushToMasterWouldFail() {
     git push --dry-run
     assertFalse $?
 }
 
-
 testPushToGerrithubShouldWork() {
     git push --dry-run origin HEAD:refs/for/master
     assertTrue $?
 }
-
 
 testRemoveRemotePrefixWithMaster() {
     local EXPECTED_BRANCH_NAME="master"
@@ -49,7 +43,6 @@ testRemoveRemotePrefixWithMaster() {
     assertEquals "$EXPECTED_BRANCH_NAME" "$DEFAULT_UPSTREAM_BRANCH_NAME"
 }
 
-
 testRemoveRemotePrefixWithRefsFor() {
     local REMOTE=origin
     local DEFAULT_FULL_UPSTREAM="refs/for/master"
@@ -59,13 +52,11 @@ testRemoveRemotePrefixWithRefsFor() {
     assertEquals "$DEFAULT_FULL_UPSTREAM" "$DEFAULT_UPSTREAM_BRANCH_NAME"
 }
 
-
 testProtectedPatternMatchesMaster() {
     eval "$PATTERN_CMD"
 
     assertTrue "[[ 'master' =~ $PATTERN ]]"
 }
-
 
 testProtectedPatternMatchesAheadMaster() {
     eval "$PATTERN_CMD"
@@ -73,13 +64,11 @@ testProtectedPatternMatchesAheadMaster() {
     assertTrue "[[ 'refs/heads/master' =~ $PATTERN ]]"
 }
 
-
 testProtectedPatternNotMatchRefsFor() {
     eval "$PATTERN_CMD"
 
     assertFalse "[[ 'refs/for/master' =~ $PATTERN ]]"
 }
-
 
 testExtraProtectedPatternPrefix() {
     local GIT_EXTRA_PROTECTED_BRANCH_PATTERN="example.*"
@@ -90,6 +79,5 @@ testExtraProtectedPatternPrefix() {
     assertTrue "Case 2" "[[ 'example_branch_1' =~ $PATTERN ]]"
     assertTrue "Case 3" "[[ 'example-1.6.0' =~ $PATTERN ]]"
 }
-
 
 source /usr/bin/shunit2

@@ -10,10 +10,9 @@ if [ -f ~/.bash_util.sh ]; then
     source ~/.bash_util.sh
 else
     Error() {
-        cat <<< "Error: $@" 1>&2;
+        cat <<< "Error: $@" 1>&2
     }
 fi
-
 
 IsProtected() {
     local BRANCH_NAME="$1"
@@ -38,7 +37,6 @@ IsProtected() {
         return 1
     fi
 }
-
 
 while read local_ref local_sha remote_ref remote_sha; do
     has_remote_ref=true
