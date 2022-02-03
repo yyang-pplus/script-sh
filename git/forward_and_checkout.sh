@@ -25,4 +25,12 @@ set -ex
 
 git checkout $TRACKED_BRANCH
 git pull --rebase --ff-only --autostash
+
+##
+# @reference    Is there a better way to find out if a local git branch exists?
+#               https://stackoverflow.com/questions/5167957/is-there-a-better-way-to-find-out-if-a-local-git-branch-exists
+##
+if git show-ref --verify --quiet "refs/heads/$NEW_BRANCH"; then
+    git branch -D "$NEW_BRANCH"
+fi
 git checkout -b "$NEW_BRANCH"
