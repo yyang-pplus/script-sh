@@ -1,12 +1,12 @@
 default_stages: [commit]
 repos:
   - repo: https://github.com/yyang-pplus/config-sh.git
-    rev: 928dadbbd33bc227a4eadd9a2b717f21f273ad1d
+    rev: d4c1eee67d5941afd748118872cb19b89061b92a
     hooks:
       - id: shfmt
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.2.0
+    rev: v4.2.0
     hooks:
       - id: check-executables-have-shebangs
         stages: [commit]
