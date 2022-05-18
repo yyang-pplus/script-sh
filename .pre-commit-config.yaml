@@ -1,7 +1,7 @@
 default_stages: [commit]
 repos:
   - repo: https://github.com/yyang-pplus/config-sh.git
-    rev: d4c1eee67d5941afd748118872cb19b89061b92a
+    rev: 0c719cfc52fb3ef589e4387a26afd2f3b2bee1fc
     hooks:
       - id: shfmt
 
@@ -16,3 +16,8 @@ repos:
       - id: check-yaml
       - id: trailing-whitespace
         stages: [commit]
+
+  - repo: https://github.com/markdownlint/markdownlint.git
+    rev: v0.11.0
+    hooks:
+      - id: markdownlint
