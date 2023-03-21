@@ -4,7 +4,7 @@ source ~/.bash_util.sh
 
 set -e
 
-NUMBER_CORES=$(grep ^cpu\\scores /proc/cpuinfo | awk '{print $4}' | uniq)
+NUMBER_CORES=$(nproc)
 PROJECT_ROOT_DIR=$(git rev-parse --show-toplevel)
 
 # For auto-discovery
