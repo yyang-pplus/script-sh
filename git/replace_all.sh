@@ -16,6 +16,6 @@ SED_COMMAND="$1"
 
 SEARCH_KEY=$(echo "$SED_COMMAND" | sed -n -E 's%^.*/(.*)/(.*)/.*$%\1%p')
 
-set -x
+set -exuo pipefail
 
 git grep --files-with-matches --null -E "$SEARCH_KEY" "$DIRECTORY" | xargs -0 sed -i -E "$SED_COMMAND"

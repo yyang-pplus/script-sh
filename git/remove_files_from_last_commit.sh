@@ -5,6 +5,8 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+set -euo pipefail
+
 ##
 # @reference    Remove files from Git commit
 #               https://stackoverflow.com/questions/12481639/remove-files-from-git-commit
