@@ -2,7 +2,7 @@
 
 source ~/.bash_util.sh
 
-set -e
+set -euo pipefail
 
 NUMBER_CORES=$(nproc)
 PROJECT_ROOT_DIR=$(git rev-parse --show-toplevel)

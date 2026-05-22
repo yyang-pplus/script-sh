@@ -17,7 +17,7 @@ fi
 # @reference    How to echo shell commands as they are executed
 #               https://stackoverflow.com/questions/2853803/how-to-echo-shell-commands-as-they-are-executed
 ##
-set -ex
+set -exuo pipefail
 
 git checkout $TRACKED_BRANCH
 git pull --rebase --ff-only --autostash

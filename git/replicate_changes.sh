@@ -2,7 +2,7 @@
 
 source ~/.bash_util.sh
 
-set -e
+set -euo pipefail
 
 if [ $# -eq 1 ]; then
     SSH_CONNECTION_STR=$1

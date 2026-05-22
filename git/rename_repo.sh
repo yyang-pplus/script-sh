@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 REPO_DIR="${1:-$(pwd)}"
 REPO_NAME=$(basename "$REPO_DIR")
