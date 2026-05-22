@@ -1,4 +1,4 @@
-default_stages: [commit]
+default_stages: [pre-commit]
 repos:
   - repo: https://github.com/yyang-pplus/config-sh.git
     rev: 1ac50d1aa0923c709f57161a5a19116dd0a31a59
@@ -9,7 +9,7 @@ repos:
     rev: v4.2.0
     hooks:
       - id: check-executables-have-shebangs
-        stages: [commit]
+        stages: [pre-commit]
       - id: check-json
       - id: check-merge-conflict
       - id: check-symlinks
@@ -17,7 +17,7 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
-        stages: [commit]
+        stages: [pre-commit]
 
   - repo: https://github.com/markdownlint/markdownlint.git
     rev: v0.11.0
