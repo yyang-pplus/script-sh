@@ -1,10 +1,6 @@
 #!/bin/bash
 
-source ~/.bash_util.sh
-
 TRACKED_BRANCH="master"
-NEW_BRANCH=""
-
 if [ $# -eq 1 ]; then
     NEW_BRANCH=$1
 elif [ $# -eq 2 ]; then
