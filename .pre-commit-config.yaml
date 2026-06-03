@@ -1,12 +1,12 @@
 default_stages: [pre-commit]
 repos:
   - repo: https://github.com/yyang-pplus/config-sh.git
-    rev: 1ac50d1aa0923c709f57161a5a19116dd0a31a59
+    rev: b768af69778668afc67b14b11ec88f6c9ca0eb00
     hooks:
       - id: shfmt
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.2.0
+    rev: v6.0.0
     hooks:
       - id: check-executables-have-shebangs
         stages: [pre-commit]
@@ -20,11 +20,11 @@ repos:
         stages: [pre-commit]
 
   - repo: https://github.com/markdownlint/markdownlint.git
-    rev: v0.11.0
+    rev: v0.13.0
     hooks:
       - id: markdownlint
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.3
+    rev: v1.38.0
     hooks:
       - id: yamllint
